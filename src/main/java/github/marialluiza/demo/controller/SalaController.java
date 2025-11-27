@@ -12,9 +12,9 @@ import java.util.List;
 @RequestMapping("/salas")
 public class SalaController {
 
+    @Autowired
     private final SalaService salaService;
 
-    @Autowired
     public SalaController(SalaService salaService) {
         this.salaService = salaService;
     }

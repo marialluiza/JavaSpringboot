@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/turmas")
 public class TurmaController {
 
+    @Autowired
     private TurmaService turmaService;
 
-    @Autowired
     public TurmaController(TurmaService turmaService) {
         this.turmaService = turmaService;
     }
