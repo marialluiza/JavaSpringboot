@@ -1,5 +1,7 @@
 package github.marialluiza.demo.controller;
 
+import github.marialluiza.demo.model.DTOs.TurmaDTO;
+import github.marialluiza.demo.model.DTOs.TurmaResponseDTO;
 import github.marialluiza.demo.model.entity.Turma;
 import github.marialluiza.demo.model.service.TurmaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +42,10 @@ public class TurmaController {
     }
 
     @PutMapping("/editar/{id}")
-    public ResponseEntity<?> editarTurma(@PathVariable("id") Long id, @RequestBody Turma turma) {
+    public ResponseEntity<?> editarTurma(@PathVariable("id") Long id, @RequestBody TurmaDTO dto) {
         try {
-            Turma turmaAtualizada = turmaService.editarTurma(id, turma);
-            return ResponseEntity.ok(turmaAtualizada);
+            Turma turmaAtualizada = turmaService.editarTurma(id, dto);
+            return ResponseEntity.ok(new TurmaResponseDTO(turmaAtualizada));
         } catch (Exception e) {
             return ResponseEntity.status(404).body("Erro: " + e.getMessage());
         }
